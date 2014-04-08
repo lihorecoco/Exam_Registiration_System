@@ -23,7 +23,7 @@ public class Controller  {
 		
 		this.student=student;
 		this.view=view;
-		System.out.println("canberk");
+		System.out.println("sinem");
 		
 	}
 	
