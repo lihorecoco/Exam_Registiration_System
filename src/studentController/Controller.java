@@ -16,14 +16,13 @@ public class Controller  {
 		
 	public Controller(){
 		
-		System.out.print("asd");
+	
 	}
 	
 	public Controller(studentModel.Student student,studentView.View view){
 		
 		this.student=student;
 		this.view=view;
-		System.out.println("sinem");
 		
 	}
 	
