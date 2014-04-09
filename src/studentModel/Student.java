@@ -5,9 +5,27 @@ public class Student {
 	private String name;
 	private String lastName;
 	private String SSN;
+	private int deskNumber;
+	private Classroom enterenceClass;
 	
+	
+	public Classroom getEnterenceClass() {
+		return enterenceClass;
+	}
+
+	public void setEnterenceClass(Classroom enterenceClass) {
+		this.enterenceClass = enterenceClass;
+	}
+
+	public int getDeskNumber() {
+		return deskNumber;
+	}
+
+	public void setDeskNumber(int deskNumber) {
+		this.deskNumber = deskNumber;
+	}
+
 	public Student(){
-		
 		
 	}
 	
