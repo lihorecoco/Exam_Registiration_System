@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.print.DocFlavor.STRING;
+import javax.swing.JOptionPane;
 
 import databaseConnection.ConnectionManager;
 
@@ -54,6 +55,11 @@ public class StudentDAOImpl implements StudentDAO{
         return conn;
 	}
 
-
+	public void showAddedStudent(Student student){
+		
+		String msg="Name :"+student.getName()+"\n Last Name: "+student.getLastName()+"\nSSN: "+student.getSSN()+"\nE-mail: "+student.getEmail()+"\nTelNo:"+student.getEmail()+""+student.getTelNo();
+		JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
+		
+	}
 
 }

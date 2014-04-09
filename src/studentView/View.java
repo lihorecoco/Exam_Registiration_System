@@ -29,22 +29,35 @@ public class View extends JFrame {
 	
 	private JButton btnSave;
 	private JButton btnClear;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JLabel label_1;
-	private JLabel label_2;
-	private JLabel label_3;
-	private JLabel label_4;
-	private JLabel label_5;
-	private JLabel label_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JLabel label_7;
-	private JLabel label_8;
+	private JTextField txtEmail;
+	public JTextField getTxtEmail() {
+		return txtEmail;
+	}
+
+	public void setTxtEmail(JTextField txtEmail) {
+		this.txtEmail = txtEmail;
+	}
+
+	public JTextField getTxtAdress() {
+		return txtAdress;
+	}
+
+	public void setTxtAdress(JTextField txtAdress) {
+		this.txtAdress = txtAdress;
+	}
+
+	public JTextField getTxtTelNo() {
+		return txtTelNo;
+	}
+
+	public void setTxtTelNo(JTextField txtTelNo) {
+		this.txtTelNo = txtTelNo;
+	}
+	private JTextField txtAdress;
+	private JTextField txtTelNo;
+	private JLabel lblEmail;
+	private JLabel lblAddress;
+	private JLabel lblTelNo;
 	
 	private JRadioButton rdMale;
 	private JRadioButton rdFemale;
@@ -97,6 +110,10 @@ public class View extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         getContentPane().add(tabbedPane, BorderLayout.CENTER);
         
+        JPanel pnlAdmin = new JPanel();
+        pnlAdmin.setBackground(Color.WHITE);
+        tabbedPane.addTab("Admin", null, pnlAdmin, null);
+        
         JPanel pnlRegistration = new JPanel();
         pnlRegistration.setBackground(Color.WHITE);
         tabbedPane.addTab("Registration", null, pnlRegistration, null);
@@ -137,112 +154,57 @@ public class View extends JFrame {
         lblSsn.setFont(new Font("Tahoma", Font.BOLD, 11));
         
         btnClear = new JButton("Clear");
-        btnClear.setBounds(121, 537, 81, 39);
+        btnClear.setBounds(137, 352, 81, 39);
         btnClear.setForeground(SystemColor.textHighlight);
         btnClear.setFont(new Font("Tahoma", Font.BOLD, 14));
         
         btnSave = new JButton("Save");
-        btnSave.setBounds(228, 537, 84, 39);
+        btnSave.setBounds(228, 352, 84, 39);
         btnSave.setForeground(SystemColor.textHighlight);
         btnSave.setFont(new Font("Tahoma", Font.BOLD, 14));
         
-        textField_1 = new JTextField();
-        textField_1.setBounds(121, 220, 191, 20);
-        textField_1.setColumns(10);
+        txtEmail = new JTextField();
+        txtEmail.setBounds(121, 220, 191, 20);
+        txtEmail.setColumns(10);
         
-        textField_2 = new JTextField();
-        textField_2.setBounds(121, 258, 191, 20);
-        textField_2.setColumns(10);
+        txtAdress = new JTextField();
+        txtAdress.setBounds(121, 258, 191, 20);
+        txtAdress.setColumns(10);
         
-        textField_3 = new JTextField();
-        textField_3.setBounds(121, 296, 191, 20);
-        textField_3.setColumns(10);
+        txtTelNo = new JTextField();
+        txtTelNo.setBounds(121, 296, 191, 20);
+        txtTelNo.setColumns(10);
         
-        textField_4 = new JTextField();
-        textField_4.setBounds(121, 334, 191, 20);
-        textField_4.setColumns(10);
+        lblEmail = new JLabel("E-Mail");
+        lblEmail.setBounds(18, 223, 93, 14);
+        lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblEmail.setFont(new Font("Tahoma", Font.BOLD, 11));
         
-        textField_5 = new JTextField();
-        textField_5.setBounds(121, 372, 191, 20);
-        textField_5.setColumns(10);
+        lblAddress = new JLabel("Address");
+        lblAddress.setBounds(18, 261, 93, 14);
+        lblAddress.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblAddress.setFont(new Font("Tahoma", Font.BOLD, 11));
         
-        textField_6 = new JTextField();
-        textField_6.setBounds(121, 410, 191, 20);
-        textField_6.setColumns(10);
-        
-        label_1 = new JLabel("Last Name");
-        label_1.setBounds(18, 223, 93, 14);
-        label_1.setHorizontalAlignment(SwingConstants.RIGHT);
-        label_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-        
-        label_2 = new JLabel("Last Name");
-        label_2.setBounds(18, 261, 93, 14);
-        label_2.setHorizontalAlignment(SwingConstants.RIGHT);
-        label_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-        
-        label_3 = new JLabel("Last Name");
-        label_3.setBounds(18, 299, 93, 14);
-        label_3.setHorizontalAlignment(SwingConstants.RIGHT);
-        label_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-        
-        label_4 = new JLabel("Last Name");
-        label_4.setBounds(18, 337, 93, 14);
-        label_4.setHorizontalAlignment(SwingConstants.RIGHT);
-        label_4.setFont(new Font("Tahoma", Font.BOLD, 11));
-        
-        label_5 = new JLabel("Last Name");
-        label_5.setBounds(18, 375, 93, 14);
-        label_5.setHorizontalAlignment(SwingConstants.RIGHT);
-        label_5.setFont(new Font("Tahoma", Font.BOLD, 11));
-        
-        label_6 = new JLabel("Last Name");
-        label_6.setBounds(18, 413, 93, 14);
-        label_6.setHorizontalAlignment(SwingConstants.RIGHT);
-        label_6.setFont(new Font("Tahoma", Font.BOLD, 11));
-        
-        textField_7 = new JTextField();
-        textField_7.setBounds(121, 448, 191, 20);
-        textField_7.setColumns(10);
-        
-        textField_8 = new JTextField();
-        textField_8.setBounds(121, 486, 191, 20);
-        textField_8.setColumns(10);
-        
-        label_7 = new JLabel("Last Name");
-        label_7.setBounds(18, 451, 93, 14);
-        label_7.setHorizontalAlignment(SwingConstants.RIGHT);
-        label_7.setFont(new Font("Tahoma", Font.BOLD, 11));
-        
-        label_8 = new JLabel("Last Name");
-        label_8.setBounds(18, 489, 93, 14);
-        label_8.setHorizontalAlignment(SwingConstants.RIGHT);
-        label_8.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblTelNo = new JLabel("Tel NO");
+        lblTelNo.setBounds(18, 299, 93, 14);
+        lblTelNo.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblTelNo.setFont(new Font("Tahoma", Font.BOLD, 11));
         pnlRegistration.setLayout(null);
         pnlRegistration.add(lblNewLabel);
         pnlRegistration.add(lblName);
         pnlRegistration.add(lblLastName);
         pnlRegistration.add(lblSsn);
-        pnlRegistration.add(label_1);
-        pnlRegistration.add(label_2);
-        pnlRegistration.add(label_3);
-        pnlRegistration.add(label_4);
-        pnlRegistration.add(label_5);
-        pnlRegistration.add(label_6);
-        pnlRegistration.add(label_7);
-        pnlRegistration.add(label_8);
+        pnlRegistration.add(lblEmail);
+        pnlRegistration.add(lblAddress);
+        pnlRegistration.add(lblTelNo);
         pnlRegistration.add(btnClear);
         pnlRegistration.add(btnSave);
         pnlRegistration.add(txtSSN);
         pnlRegistration.add(txtLastName);
         pnlRegistration.add(txtName);
-        pnlRegistration.add(textField_1);
-        pnlRegistration.add(textField_2);
-        pnlRegistration.add(textField_3);
-        pnlRegistration.add(textField_4);
-        pnlRegistration.add(textField_5);
-        pnlRegistration.add(textField_6);
-        pnlRegistration.add(textField_7);
-        pnlRegistration.add(textField_8);
+        pnlRegistration.add(txtEmail);
+        pnlRegistration.add(txtAdress);
+        pnlRegistration.add(txtTelNo);
         
         rdMale = new JRadioButton("Male");
         rdMale.setBackground(Color.WHITE);
@@ -254,18 +216,14 @@ public class View extends JFrame {
         rdFemale.setBackground(Color.WHITE);
         rdFemale.setBounds(197, 184, 81, 23);
         pnlRegistration.add(rdFemale);
-     
-       
         
-        JLabel lblGender = new JLabel("Gender");
-        lblGender.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblGender.setFont(new Font("Tahoma", Font.BOLD, 11));
-        lblGender.setBounds(18, 188, 93, 14);
-        pnlRegistration.add(lblGender);
-        
-        JPanel pnlAdmin = new JPanel();
-        pnlAdmin.setBackground(Color.WHITE);
-        tabbedPane.addTab("Admin", null, pnlAdmin, null);
+          
+           
+           JLabel lblGender = new JLabel("Gender");
+           lblGender.setHorizontalAlignment(SwingConstants.RIGHT);
+           lblGender.setFont(new Font("Tahoma", Font.BOLD, 11));
+           lblGender.setBounds(18, 188, 93, 14);
+           pnlRegistration.add(lblGender);
        
         
     }

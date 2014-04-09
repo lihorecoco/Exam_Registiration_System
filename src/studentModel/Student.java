@@ -5,6 +5,36 @@ public class Student {
 	private String name;
 	private String lastName;
 	private String SSN;
+	private String email;
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAddres() {
+		return addres;
+	}
+
+	public void setAddres(String addres) {
+		this.addres = addres;
+	}
+
+	public String getTelNo() {
+		return telNo;
+	}
+
+	public void setTelNo(String telNo) {
+		this.telNo = telNo;
+	}
+	private String addres;
+	private String telNo;
+	
+	
+	
 	private int deskNumber;
 	private Classroom enterenceClass;
 	

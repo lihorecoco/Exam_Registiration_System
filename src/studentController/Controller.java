@@ -47,18 +47,22 @@ public class Controller  {
 						student.setName(view.getTxtName().getText());
 						student.setLastName(view.getTxtLastName().getText());
 						student.setSSN(view.getTxtSSN().getText());
+						student.setAddres(view.getTxtAdress().getText());
+						student.setTelNo(view.getTxtTelNo().getText());
+						student.setEmail(view.getTxtEmail().getText());
 						//String msg=student.getName()+"\n "+student.getLastName()+"\n"+student.getSSN();
 						//JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
 					
 						StudentDAO stdDao=StudentDAOFactory.getStudentDAO();
+						stdDao.showAddedStudent(student);
 					
-						int result = stdDao.insertStudent(student);
+						/*int result = stdDao.insertStudent(student);
 						stdDao.getStudent("");
 						if (result==1) {
 							JOptionPane.showMessageDialog(null, " Ekleme iþlemi Baþarýlý !!!","Success",JOptionPane.INFORMATION_MESSAGE);
 						} else 
 							JOptionPane.showMessageDialog(null, " Ekleme iþlemi BAÞARISIZ !!!","Error",JOptionPane.ERROR_MESSAGE);
-					}
+					*/}
 				}else if(e.getSource()==view.getBtnClear()){
 					view.getTxtName().setText("");
 					view.getTxtLastName().setText("");
