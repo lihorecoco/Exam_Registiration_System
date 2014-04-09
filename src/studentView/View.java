@@ -20,6 +20,7 @@ import java.awt.SystemColor;
 import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 
 public class View extends JFrame {
 	private JTextField txtName;
@@ -28,6 +29,26 @@ public class View extends JFrame {
 	
 	private JButton btnSave;
 	private JButton btnClear;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
+	private JLabel label_4;
+	private JLabel label_5;
+	private JLabel label_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JLabel label_7;
+	private JLabel label_8;
+	
+	private JRadioButton rdMale;
+	private JRadioButton rdFemale;
+	
 	
 	public JTextField getTxtName() {
 		return txtName;
@@ -61,6 +82,9 @@ public class View extends JFrame {
 		return btnClear;
 	}
 
+	
+	  public JRadioButton getRdMale(){ return rdMale;}
+      public JRadioButton getRdFemale(){ return rdFemale;}
     public View() {
     	setResizable(false);
     	
@@ -68,7 +92,7 @@ public class View extends JFrame {
         
         setTitle("Exam Registration");
         setBounds(100, 100, 100, 100);
-        setSize(470, 500);
+        setSize(950, 700);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         getContentPane().add(tabbedPane, BorderLayout.CENTER);
@@ -78,92 +102,169 @@ public class View extends JFrame {
         tabbedPane.addTab("Registration", null, pnlRegistration, null);
         
         JLabel lblNewLabel = new JLabel("Exam Registration System");
+        lblNewLabel.setBounds(10, 11, 929, 49);
         
-        lblNewLabel.setBackground(Color.ORANGE);
+        lblNewLabel.setBackground(Color.green);
         lblNewLabel.setForeground(SystemColor.textHighlight);
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         
         JLabel lblName = new JLabel("Name");        
+        lblName.setBounds(18, 74, 93, 14);
         lblName.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblName.setHorizontalAlignment(SwingConstants.RIGHT);
         
         txtName = new JTextField();
+        txtName.setBounds(121, 68, 191, 20);
         txtName.setColumns(10);
         
         txtLastName = new JTextField();
+        txtLastName.setBounds(121, 106, 191, 20);
         txtLastName.setColumns(10);
         
         JLabel lblLastName = new JLabel("Last Name");
+        lblLastName.setBounds(18, 112, 93, 14);
         lblLastName.setHorizontalAlignment(SwingConstants.RIGHT);
         lblLastName.setFont(new Font("Tahoma", Font.BOLD, 11));
         
         txtSSN = new JTextField();
+        txtSSN.setBounds(121, 144, 191, 20);
         txtSSN.setColumns(10);
         
         JLabel lblSsn = new JLabel("SSN");
+        lblSsn.setBounds(18, 150, 93, 14);
         lblSsn.setHorizontalAlignment(SwingConstants.RIGHT);
         lblSsn.setFont(new Font("Tahoma", Font.BOLD, 11));
         
         btnClear = new JButton("Clear");
+        btnClear.setBounds(121, 537, 81, 39);
         btnClear.setForeground(SystemColor.textHighlight);
         btnClear.setFont(new Font("Tahoma", Font.BOLD, 14));
         
         btnSave = new JButton("Save");
+        btnSave.setBounds(228, 537, 84, 39);
         btnSave.setForeground(SystemColor.textHighlight);
         btnSave.setFont(new Font("Tahoma", Font.BOLD, 14));
         
-        GroupLayout gl_pnlRegistration = new GroupLayout(pnlRegistration);
-        gl_pnlRegistration.setHorizontalGroup(
-        	gl_pnlRegistration.createParallelGroup(Alignment.LEADING)
-        		.addGroup(gl_pnlRegistration.createSequentialGroup()
-        			.addContainerGap()
-        			.addGroup(gl_pnlRegistration.createParallelGroup(Alignment.LEADING)
-        				.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-        				.addGroup(gl_pnlRegistration.createSequentialGroup()
-        					.addGap(8)
-        					.addGroup(gl_pnlRegistration.createParallelGroup(Alignment.TRAILING)
-        						.addComponent(lblName, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(lblLastName, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(lblSsn, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
-        					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addGroup(gl_pnlRegistration.createParallelGroup(Alignment.LEADING, false)
-        						.addGroup(gl_pnlRegistration.createSequentialGroup()
-        							.addComponent(btnClear)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(btnSave, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        						.addComponent(txtLastName, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-        						.addComponent(txtName, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-        						.addComponent(txtSSN, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-        					.addPreferredGap(ComponentPlacement.RELATED, 168, Short.MAX_VALUE)))
-        			.addContainerGap(10, Short.MAX_VALUE))
-        );
-        gl_pnlRegistration.setVerticalGroup(
-        	gl_pnlRegistration.createParallelGroup(Alignment.LEADING)
-        		.addGroup(gl_pnlRegistration.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
-        			.addGap(8)
-        			.addGroup(gl_pnlRegistration.createParallelGroup(Alignment.TRAILING)
-        				.addComponent(lblName)
-        				.addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addGap(18)
-        			.addGroup(gl_pnlRegistration.createParallelGroup(Alignment.TRAILING)
-        				.addComponent(txtLastName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(lblLastName))
-        			.addGap(18)
-        			.addGroup(gl_pnlRegistration.createParallelGroup(Alignment.TRAILING)
-        				.addComponent(txtSSN, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(lblSsn))
-        			.addGap(26)
-        			.addGroup(gl_pnlRegistration.createParallelGroup(Alignment.LEADING)
-        				.addComponent(btnClear, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(btnSave, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-        			.addContainerGap(218, Short.MAX_VALUE))
-        );
-        pnlRegistration.setLayout(gl_pnlRegistration);
+        textField_1 = new JTextField();
+        textField_1.setBounds(121, 220, 191, 20);
+        textField_1.setColumns(10);
+        
+        textField_2 = new JTextField();
+        textField_2.setBounds(121, 258, 191, 20);
+        textField_2.setColumns(10);
+        
+        textField_3 = new JTextField();
+        textField_3.setBounds(121, 296, 191, 20);
+        textField_3.setColumns(10);
+        
+        textField_4 = new JTextField();
+        textField_4.setBounds(121, 334, 191, 20);
+        textField_4.setColumns(10);
+        
+        textField_5 = new JTextField();
+        textField_5.setBounds(121, 372, 191, 20);
+        textField_5.setColumns(10);
+        
+        textField_6 = new JTextField();
+        textField_6.setBounds(121, 410, 191, 20);
+        textField_6.setColumns(10);
+        
+        label_1 = new JLabel("Last Name");
+        label_1.setBounds(18, 223, 93, 14);
+        label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+        
+        label_2 = new JLabel("Last Name");
+        label_2.setBounds(18, 261, 93, 14);
+        label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+        
+        label_3 = new JLabel("Last Name");
+        label_3.setBounds(18, 299, 93, 14);
+        label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+        
+        label_4 = new JLabel("Last Name");
+        label_4.setBounds(18, 337, 93, 14);
+        label_4.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+        
+        label_5 = new JLabel("Last Name");
+        label_5.setBounds(18, 375, 93, 14);
+        label_5.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_5.setFont(new Font("Tahoma", Font.BOLD, 11));
+        
+        label_6 = new JLabel("Last Name");
+        label_6.setBounds(18, 413, 93, 14);
+        label_6.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_6.setFont(new Font("Tahoma", Font.BOLD, 11));
+        
+        textField_7 = new JTextField();
+        textField_7.setBounds(121, 448, 191, 20);
+        textField_7.setColumns(10);
+        
+        textField_8 = new JTextField();
+        textField_8.setBounds(121, 486, 191, 20);
+        textField_8.setColumns(10);
+        
+        label_7 = new JLabel("Last Name");
+        label_7.setBounds(18, 451, 93, 14);
+        label_7.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_7.setFont(new Font("Tahoma", Font.BOLD, 11));
+        
+        label_8 = new JLabel("Last Name");
+        label_8.setBounds(18, 489, 93, 14);
+        label_8.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_8.setFont(new Font("Tahoma", Font.BOLD, 11));
+        pnlRegistration.setLayout(null);
+        pnlRegistration.add(lblNewLabel);
+        pnlRegistration.add(lblName);
+        pnlRegistration.add(lblLastName);
+        pnlRegistration.add(lblSsn);
+        pnlRegistration.add(label_1);
+        pnlRegistration.add(label_2);
+        pnlRegistration.add(label_3);
+        pnlRegistration.add(label_4);
+        pnlRegistration.add(label_5);
+        pnlRegistration.add(label_6);
+        pnlRegistration.add(label_7);
+        pnlRegistration.add(label_8);
+        pnlRegistration.add(btnClear);
+        pnlRegistration.add(btnSave);
+        pnlRegistration.add(txtSSN);
+        pnlRegistration.add(txtLastName);
+        pnlRegistration.add(txtName);
+        pnlRegistration.add(textField_1);
+        pnlRegistration.add(textField_2);
+        pnlRegistration.add(textField_3);
+        pnlRegistration.add(textField_4);
+        pnlRegistration.add(textField_5);
+        pnlRegistration.add(textField_6);
+        pnlRegistration.add(textField_7);
+        pnlRegistration.add(textField_8);
+        
+        rdMale = new JRadioButton("Male");
+        rdMale.setBackground(Color.WHITE);
+        rdMale.setSelected(true);
+        rdMale.setBounds(121, 184, 63, 23);
+        pnlRegistration.add(rdMale);
+        
+        rdFemale = new JRadioButton("Female");
+        rdFemale.setBackground(Color.WHITE);
+        rdFemale.setBounds(197, 184, 81, 23);
+        pnlRegistration.add(rdFemale);
+     
+       
+        
+        JLabel lblGender = new JLabel("Gender");
+        lblGender.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblGender.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblGender.setBounds(18, 188, 93, 14);
+        pnlRegistration.add(lblGender);
         
         JPanel pnlAdmin = new JPanel();
+        pnlAdmin.setBackground(Color.WHITE);
         tabbedPane.addTab("Admin", null, pnlAdmin, null);
        
         

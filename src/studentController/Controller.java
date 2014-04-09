@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import studentModel.StudentDAO;
+import studentModel.StudentDAOFactory;
+
 public class Controller  {
 	
 		private studentModel.Student student;
@@ -27,6 +30,8 @@ public class Controller  {
 	}
 	
 	public void control(){
+		
+		
 		actionListener=new ActionListener() {
 			
 			@Override
@@ -34,12 +39,26 @@ public class Controller  {
 				// TODO Auto-generated method stub
 				
 				if(e.getSource()==view.getBtnSave()){
-					student.setName(view.getTxtName().getText());
-					student.setLastName(view.getTxtLastName().getText());
-					student.setSSN(view.getTxtSSN().getText());
-					String msg=student.getName()+"\n "+student.getLastName()+"\n"+student.getSSN();
-					JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
+					if(view.getTxtName().getText()==""||view.getTxtLastName().getText()==""||view.getTxtSSN().getText()==""){
+						JOptionPane.showMessageDialog(null, "Fil the whole infos. !!!","Display Message",JOptionPane.ERROR_MESSAGE);
+						//return;
+					}
+					else{
+						student.setName(view.getTxtName().getText());
+						student.setLastName(view.getTxtLastName().getText());
+						student.setSSN(view.getTxtSSN().getText());
+						//String msg=student.getName()+"\n "+student.getLastName()+"\n"+student.getSSN();
+						//JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
 					
+						StudentDAO stdDao=StudentDAOFactory.getStudentDAO();
+					
+						int result = stdDao.insertStudent(student);
+						stdDao.getStudent("");
+						if (result==1) {
+							JOptionPane.showMessageDialog(null, " Ekleme iþlemi Baþarýlý !!!","Success",JOptionPane.INFORMATION_MESSAGE);
+						} else 
+							JOptionPane.showMessageDialog(null, " Ekleme iþlemi BAÞARISIZ !!!","Error",JOptionPane.ERROR_MESSAGE);
+					}
 				}else if(e.getSource()==view.getBtnClear()){
 					view.getTxtName().setText("");
 					view.getTxtLastName().setText("");
@@ -48,6 +67,7 @@ public class Controller  {
 					
 					
 				}
+					
 			
 			}
 		};

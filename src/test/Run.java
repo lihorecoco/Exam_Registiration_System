@@ -21,10 +21,9 @@ public class Run {
 					
 						Student	std=new Student();
 						View view=new View();
+						Controller cntrl=new Controller(std, view);
 			
-			Controller cntrl=new Controller(std, view);
-			
-			cntrl.control();
+						cntrl.control();
 						
 						
 					} catch (Exception e) {
