@@ -24,7 +24,7 @@ public class Run {
 						Controller cntrl=new Controller(std, view);
 			
 						cntrl.control();
-						
+						System.out.println("");
 						
 					} catch (Exception e) {
 						e.printStackTrace();
