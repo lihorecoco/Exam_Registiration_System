@@ -37,10 +37,6 @@ public class Controller  {
 	public void control(){
 		ArrayList<Classroom> classes = new ArrayList<Classroom>(); 
 
-		Instructor instructor1 = new Instructor("Ýsmail", "Kurar", "12");
-		Instructor instructor2 = new Instructor("Ýsmail1", "Kurar1", "13");
-		Instructor instructor3 = new Instructor("Ýsmail2", "Kurar2", "14");
-		Instructor instructor4= new Instructor("Ýsmail3", "Kurar3", "15");
 		
 		Classroom class1 = new Classroom(1);
 		Classroom class2= new Classroom(2);
@@ -51,14 +47,11 @@ public class Controller  {
 		classes.add(class2);
 		classes.add(class3);
 		classes.add(class4);
-		
-		
-		
-		
+		System.out.println("inside");
 		
 		exam = new ExamOrganization(classes);
 		
-	
+		
 		
 		//exam.examOrganization(student);
 
@@ -69,7 +62,7 @@ public class Controller  {
 		exam.instructorAssignToClass(instructor4);
 	 */	
 		
-		System.out.println("student class : " + student.getEnterenceClass().getName() + " student DeskNumber : "  + student.getDeskNumber() + " Classrom instructer : " + student.getEnterenceClass().getInstructor().getName());
+		//System.out.println("student class : " + student.getEnterenceClass().getName() + " student DeskNumber : "  + student.getDeskNumber() + " Classrom instructer : " + student.getEnterenceClass().getInstructor().getName());
 		//System.out.println("student2 class : " + std.getEnterenceClass().getName() + " student DeskNumber : "  + std.getDeskNumber() + " Classrom instructer : " + std.getEnterenceClass().getInstructor().getName());
 		//System.out.println("student3 class : " + std.getEnterenceClass().getName() + " student DeskNumber : "  + std.getDeskNumber() + " Classrom instructer : " + std.getEnterenceClass().getInstructor().getName());
 		actionListener=new ActionListener() {
@@ -86,7 +79,9 @@ public class Controller  {
 						//return;
 					}
 					else{
+						System.out.println("inside");
 						Student student1 = new Student( view.getTxtName().getText(), view.getTxtLastName().getText(), view.getTxtSSN().getText());
+						System.out.println("inside");
 						student=student1;
 						exam.examOrganization(student);
 						//student.setName(view.getTxtName().getText());
@@ -98,7 +93,11 @@ public class Controller  {
 						//String msg=student.getName()+"\n "+student.getLastName()+"\n"+student.getSSN();
 						//JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
 					   
-						String msg=student.getName()+"\n "+student.getLastName()+"\n"+student.getSSN()+"\n " + student.getEnterenceClass().getName();
+						String msg="Student Name"+student.getName()+"\n " +
+						"student last name : " +student.getLastName()+"\n"+
+						"student SSN :"	+student.getSSN()+"\n " + 
+						"student Enterenca Class:" + student.getEnterenceClass().getName()+"\n"+
+						"student Desk Number:" + student.getDeskNumber();
 						JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
 						//StudentDAO stdDao=StudentDAOFactory.getStudentDAO();
 						//stdDao.showAddedStudent(student);

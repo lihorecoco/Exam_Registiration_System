@@ -24,7 +24,7 @@ public class Run {
 						View view=new View();
 						Controller cntrl=new Controller(std, view);
 ////////////////////////////
-						ArrayList<Classroom> classes = new ArrayList<Classroom>(); 
+						//ArrayList<Classroom> classes = new ArrayList<Classroom>(); 
 						
  						/*Student student1 = new Student("Canberk", "Doðan", "12345");
 						Student student2 = new Student("Canberk1", "Doðan2", "12346");
