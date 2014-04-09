@@ -67,6 +67,9 @@ public class Controller  {
 					view.getTxtName().setText("");
 					view.getTxtLastName().setText("");
 					view.getTxtSSN().setText("");
+					view.getTxtAdress().setText("");
+					view.getTxtEmail().setText("");
+					view.getTxtTelNo().setText("");
 					
 					
 					

@@ -1,4 +1,4 @@
-package test;
+package testt;
 import java.awt.EventQueue;
 
 import javax.swing.SwingUtilities;
