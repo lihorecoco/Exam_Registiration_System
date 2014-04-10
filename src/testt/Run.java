@@ -24,7 +24,7 @@ public class Run {
 						View view=new View();
 						Controller cntrl=new Controller(std, view);
 ////////////////////////////
-						System.out.println("asdasd");
+			
 						
 						//////////////
 						cntrl.control();
