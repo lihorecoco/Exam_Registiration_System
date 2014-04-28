@@ -23,11 +23,10 @@ public class Run {
 						Student	std=new Student();
 						View view=new View();
 						Controller cntrl=new Controller(std, view);
-////////////////////////////
-			
-						
-						//////////////
 						cntrl.control();
+						AdminView admin_view =new AdminView();
+						Controller_Admin controller_admin= new Controller_Admin(view,admin_view);						
+						controller_admin.control_Admin();
 						
 					} catch (Exception e) {
 						e.printStackTrace();

@@ -7,6 +7,9 @@ public class Student {
 	private String SSN;
 	private String email;
 	
+	private String addres;
+	private String telNo;
+	
 	public String getEmail() {
 		return email;
 	}
@@ -29,30 +32,6 @@ public class Student {
 
 	public void setTelNo(String telNo) {
 		this.telNo = telNo;
-	}
-	private String addres;
-	private String telNo;
-	
-	
-	
-	private int deskNumber;
-	private Classroom enterenceClass;
-	
-	
-	public Classroom getEnterenceClass() {
-		return enterenceClass;
-	}
-
-	public void setEnterenceClass(Classroom enterenceClass) {
-		this.enterenceClass = enterenceClass;
-	}
-
-	public int getDeskNumber() {
-		return deskNumber;
-	}
-
-	public void setDeskNumber(int deskNumber) {
-		this.deskNumber = deskNumber;
 	}
 
 	public Student(){

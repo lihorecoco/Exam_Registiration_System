@@ -21,15 +21,57 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
+import java.awt.CardLayout;
 
 public class View extends JFrame {
 	private JTextField txtName;
 	private JTextField txtLastName;
 	private JTextField txtSSN;
+	private JTextField txtAdress;
+	private JTextField txtTelNo;
+	private JLabel lblEmail;
+	private JLabel lblAddress;
+	private JLabel lblTelNo;
 	
+	private JRadioButton rdMale;
+	private JRadioButton rdFemale;
+	
+	
+	private JButton btnLogin;
 	private JButton btnSave;
 	private JButton btnClear;
 	private JTextField txtEmail;
+	private JTextField txtUsername;
+	private JPasswordField txtPassword;
+	private JLabel lblSystemAdministration;
+	
+	
+
+
+	public JButton getBtnLogin() {
+		return btnLogin;
+	}
+
+	public void setBtnLogin(JButton btnLogin) {
+		this.btnLogin = btnLogin;
+	}
+
+	public JTextField getTxtUsername() {
+		return txtUsername;
+	}
+
+	public void setTxtUsername(JTextField txtUsername) {
+		this.txtUsername = txtUsername;
+	}
+
+	public JPasswordField getTxtPassword() {
+		return txtPassword;
+	}
+
+	public void setTxtPassword(JPasswordField txtPassword) {
+		this.txtPassword = txtPassword;
+	}
+
 	public JTextField getTxtEmail() {
 		return txtEmail;
 	}
@@ -53,16 +95,7 @@ public class View extends JFrame {
 	public void setTxtTelNo(JTextField txtTelNo) {
 		this.txtTelNo = txtTelNo;
 	}
-	private JTextField txtAdress;
-	private JTextField txtTelNo;
-	private JLabel lblEmail;
-	private JLabel lblAddress;
-	private JLabel lblTelNo;
-	
-	private JRadioButton rdMale;
-	private JRadioButton rdFemale;
-	
-	
+		
 	public JTextField getTxtName() {
 		return txtName;
 	}
@@ -86,7 +119,7 @@ public class View extends JFrame {
 	public void setTxtSSN(JTextField txtSSN) {
 		this.txtSSN = txtSSN;
 	}
-
+	
 	public JButton getBtnSave() {
 		return btnSave;
 	}
@@ -95,6 +128,10 @@ public class View extends JFrame {
 		return btnClear;
 	}
 
+
+	
+	
+	
 	
 	  public JRadioButton getRdMale(){ return rdMale;}
       public JRadioButton getRdFemale(){ return rdFemale;}
@@ -110,9 +147,51 @@ public class View extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         getContentPane().add(tabbedPane, BorderLayout.CENTER);
         
-        JPanel pnlAdmin = new JPanel();
+        JPanel pnlAdmin =new JPanel();
+        pnlAdmin.setForeground(new Color(30, 144, 255));
         pnlAdmin.setBackground(Color.WHITE);
         tabbedPane.addTab("Admin", null, pnlAdmin, null);
+        pnlAdmin.setLayout(null);
+        
+        txtUsername = new JTextField();
+        txtUsername.setBounds(439, 282, 169, 20);
+        pnlAdmin.add(txtUsername);
+        txtUsername.setColumns(10);
+        
+        JLabel lblUsername_1 = new JLabel("Username :");
+        lblUsername_1.setBounds(299, 281, 130, 21);
+        pnlAdmin.add(lblUsername_1);
+        lblUsername_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+        lblUsername_1.setForeground(SystemColor.textHighlight);
+        
+        JLabel lblPassword_1 = new JLabel("Password : ");
+        lblPassword_1.setBounds(299, 324, 130, 21);
+        pnlAdmin.add(lblPassword_1);
+        lblPassword_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+        lblPassword_1.setForeground(SystemColor.textHighlight);
+        
+        
+        txtPassword = new JPasswordField();
+        txtPassword.setBounds(439, 328, 169, 20);
+        pnlAdmin.add(txtPassword);
+        
+        lblSystemAdministration = new JLabel("System Administration");
+        lblSystemAdministration.setBackground(new Color(30, 144, 255));
+        lblSystemAdministration.setBounds(299, 98, 348, 31);
+        pnlAdmin.add(lblSystemAdministration);
+        lblSystemAdministration.setFont(new Font("Tahoma", Font.BOLD, 30));
+        lblSystemAdministration.setForeground(new Color(30, 144, 255));
+        
+        btnLogin = new JButton("Login\r\n");
+        btnLogin.setForeground(new Color(30, 144, 255));
+        btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnLogin.setToolTipText("");
+        btnLogin.setBounds(519, 376, 89, 31);
+        pnlAdmin.add(btnLogin);
+        
+
+        
+   
         
         JPanel pnlRegistration = new JPanel();
         pnlRegistration.setBackground(Color.WHITE);
@@ -189,6 +268,7 @@ public class View extends JFrame {
         lblTelNo.setBounds(18, 299, 93, 14);
         lblTelNo.setHorizontalAlignment(SwingConstants.RIGHT);
         lblTelNo.setFont(new Font("Tahoma", Font.BOLD, 11));
+       
         pnlRegistration.setLayout(null);
         pnlRegistration.add(lblNewLabel);
         pnlRegistration.add(lblName);

@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import studentModel.Classroom;
-import studentModel.ExamOrganization;
+
+import studentModel.ExamOrganizator;
 import studentModel.Instructor;
+import studentModel.Session;
+import studentModel.SessionClassroom;
 import studentModel.Student;
 import studentModel.StudentDAO;
 import studentModel.StudentDAOFactory;
@@ -19,12 +22,12 @@ public class Controller  {
 		private studentModel.Student student;
 		private studentView.View view;
 		private ActionListener actionListener;
-		private ExamOrganization exam;
-		private Dialog msg;
+		private ExamOrganizator examOrganization;
+		private String msg;
+		
 		
 	public Controller(){
 		
-	
 	}
 	
 	public Controller(studentModel.Student student,studentView.View view){
@@ -35,36 +38,34 @@ public class Controller  {
 	}
 	
 	public void control(){
-		ArrayList<Classroom> classes = new ArrayList<Classroom>(); 
-
 		
-		Classroom class1 = new Classroom(1);
-		Classroom class2= new Classroom(2);
-		Classroom class3= new Classroom(3);
-		Classroom class4= new Classroom(4);
+		Instructor instructor = new Instructor("Ali", "Veli", "12");
+		Instructor instructor1 = new Instructor("Ali1", "Veli1", "12");
+		Instructor instructor2 = new Instructor("Ali2", "Veli2", "12");
 		
-		classes.add(class1);
-		classes.add(class2);
-		classes.add(class3);
-		classes.add(class4);
-		System.out.println("inside");
+		Classroom classroom = new Classroom(1, 13, 4);
+		Classroom classroom1 = new Classroom(2, 13, 4);
+		Classroom classroom2 = new Classroom(3, 13, 4);
 		
-		exam = new ExamOrganization(classes);
+		SessionClassroom sessionClassroom = new SessionClassroom(classroom);
+		SessionClassroom sessionClassroom1 = new SessionClassroom(classroom1);
+		SessionClassroom sessionClassroom2 = new SessionClassroom(classroom2);
+		
+		ArrayList<SessionClassroom> sessionClassrooms = new ArrayList<SessionClassroom>();
+		sessionClassrooms.add(sessionClassroom);
+		sessionClassrooms.add(sessionClassroom1);
+		sessionClassrooms.add(sessionClassroom2);
 		
 		
 		
-		//exam.examOrganization(student);
-
-	  /*
-		exam.instructorAssignToClass(instructor1);
-		exam.instructorAssignToClass(instructor2);
-		exam.instructorAssignToClass(instructor3);
-		exam.instructorAssignToClass(instructor4);
-	 */	
+		Session session = new Session(sessionClassrooms,"21/03/2013" , "Session1");
 		
-		//System.out.println("student class : " + student.getEnterenceClass().getName() + " student DeskNumber : "  + student.getDeskNumber() + " Classrom instructer : " + student.getEnterenceClass().getInstructor().getName());
-		//System.out.println("student2 class : " + std.getEnterenceClass().getName() + " student DeskNumber : "  + std.getDeskNumber() + " Classrom instructer : " + std.getEnterenceClass().getInstructor().getName());
-		//System.out.println("student3 class : " + std.getEnterenceClass().getName() + " student DeskNumber : "  + std.getDeskNumber() + " Classrom instructer : " + std.getEnterenceClass().getInstructor().getName());
+		
+		examOrganization = new ExamOrganizator(session);
+		examOrganization.addInstructorToclass(instructor);
+		examOrganization.addInstructorToclass(instructor1);
+		examOrganization.addInstructorToclass(instructor2);
+		
 		actionListener=new ActionListener() {
 			
 			@Override
@@ -72,44 +73,27 @@ public class Controller  {
 				// TODO Auto-generated method stub
 				
 				if(e.getSource()==view.getBtnSave()){
-					if(view.getTxtName().getText()==""||view.getTxtLastName().getText()==""||view.getTxtSSN().getText()==""){
-						JOptionPane.showMessageDialog(null, "Fil the whole infos. !!!","Display Message",JOptionPane.ERROR_MESSAGE);
-						//Student student = new Student( view.getTxtName().getText(), view.getTxtLastName().getText(), view.getTxtSSN().getText());
-					    //exam.examOrganization(student);
-						//return;
+					if(view.getTxtName().getText().equalsIgnoreCase("") || view.getTxtLastName().getText().equalsIgnoreCase("") || view.getTxtSSN().getText().equalsIgnoreCase("")){
+						JOptionPane.showMessageDialog(null, "Fill The Entire of Info !!","Guide",JOptionPane.ERROR_MESSAGE);
+						
+					
 					}
 					else{
-						System.out.println("inside");
-						Student student1 = new Student( view.getTxtName().getText(), view.getTxtLastName().getText(), view.getTxtSSN().getText());
-						System.out.println("inside");
-						student=student1;
-						exam.examOrganization(student);
-						//student.setName(view.getTxtName().getText());
-						//student.setLastName(view.getTxtLastName().getText());
-						//student.setSSN(view.getTxtSSN().getText());
+						
+						Student student_tmp = new Student(view.getTxtName().getText(), view.getTxtLastName().getText(), view.getTxtSSN().getText());
+						student=student_tmp;
+						
+						
 						student.setAddres(view.getTxtAdress().getText());
 						student.setTelNo(view.getTxtTelNo().getText());
 						student.setEmail(view.getTxtEmail().getText());
-						//String msg=student.getName()+"\n "+student.getLastName()+"\n"+student.getSSN();
-						//JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
-					   
-						String msg="Student Name"+student.getName()+"\n " +
-						"student last name : " +student.getLastName()+"\n"+
-						"student SSN :"	+student.getSSN()+"\n " + 
-						"student Enterenca Class:" + student.getEnterenceClass().getName()+"\n"+
-						"student Desk Number:" + student.getDeskNumber();
+						
+						msg= examOrganization.addStudentToClass(student).toString();
+						
 						JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
-						//StudentDAO stdDao=StudentDAOFactory.getStudentDAO();
-						//stdDao.showAddedStudent(student);
 						
 					
-						/*int result = stdDao.insertStudent(student);
-						stdDao.getStudent("");
-						if (result==1) {
-							JOptionPane.showMessageDialog(null, " Ekleme iþlemi Baþarýlý !!!","Success",JOptionPane.INFORMATION_MESSAGE);
-						} else 
-							JOptionPane.showMessageDialog(null, " Ekleme iþlemi BAÞARISIZ !!!","Error",JOptionPane.ERROR_MESSAGE);
-					*/}
+					}
 				}else if(e.getSource()==view.getBtnClear()){
 					view.getTxtName().setText("");
 					view.getTxtLastName().setText("");

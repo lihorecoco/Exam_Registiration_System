@@ -5,25 +5,15 @@ import java.util.ArrayList;
 public class Classroom {
 
 	private int name;
-	private Student[] desks;
-	private Instructor instructor;
+	private int capacity;
+	private int floor;
 	
-	public Classroom(int name) {
+	public Classroom(int name, int capacity, int floor) {
 		super();
 		this.name = name;
-		desks=new Student[16];
-		
+		this.capacity = capacity;
+		this.floor = floor;
 	}
-
-	
-	public Instructor getInstructor() {
-		return instructor;
-	}
-
-	public void setInstructor(Instructor instructor) {
-		this.instructor = instructor;
-	}
-	
 
 	public int getName() {
 		return name;
@@ -33,13 +23,24 @@ public class Classroom {
 		this.name = name;
 	}
 
-	public Student[] getDesks() {
-		return desks;
+	public int getCapacity() {
+		return capacity;
 	}
 
-	public void setDesks(Student[] desks) {
-		this.desks = desks;
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
 	}
+
+	public int getFloor() {
+		return floor;
+	}
+
+	public void setFloor(int floor) {
+		this.floor = floor;
+	} 
+	
+	
+	
 	
 	
 	
