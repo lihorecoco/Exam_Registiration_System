@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 public class Classroom {
 
-	private int name;
+	private String name;
 	private int capacity;
 	private int floor;
 	
-	public Classroom(int name, int capacity, int floor) {
+	public Classroom(String name, int capacity, int floor) {
 		super();
 		this.name = name;
 		this.capacity = capacity;
 		this.floor = floor;
 	}
 
-	public int getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

@@ -1,10 +1,12 @@
 package studentModel;
 
+import java.util.ArrayList;
+
 public interface StudentDAO {
 	
 	public int insertStudent(Student newStudent);
 	public Student getStudent(String SSN);
-	public void showAddedStudent(Student student);
+	public ArrayList<Student> showAddedStudent();
 	
 	
 	

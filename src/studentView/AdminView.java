@@ -3,13 +3,17 @@ package studentView;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.ScrollPane;
 import java.awt.SystemColor;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -31,7 +35,7 @@ public class AdminView extends JFrame {
 	private JButton btnAddInstructor;
 	private JButton btnAddNewClass; 
 	private JLabel lblAdminPanel;
-	private JButton btnAddToExam;
+	private JButton btnOrganizeTheExam;
 	private JButton btnBackToMenu;
 	private JTextField txtAddInstructorName;
 	private JTextField txtInstructorSurname;
@@ -49,6 +53,8 @@ public class AdminView extends JFrame {
 	private JPanel adminPanel;
 	private JPanel addInstructorPanel;
 	private JPanel adminClassPanel;
+	private JTextField txtSSN;
+	private DefaultListModel<String> model;
 	
 	public AdminView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,7 +86,7 @@ public class AdminView extends JFrame {
 		
 		
 
-		btnShowRegisteredStudents = new JButton("Show Registered Students");
+		btnShowRegisteredStudents = new JButton("Show Students");
 		btnShowRegisteredStudents.setBackground(new Color(255, 255, 255));
 		btnShowRegisteredStudents.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnShowRegisteredStudents.setForeground(new Color(30, 144, 255));
@@ -115,17 +121,18 @@ public class AdminView extends JFrame {
 		lblAdminPanel.setBounds(344, 57, 199, 25);
 		adminPanel.add(lblAdminPanel);
 		
-		JList list = new JList();
-		list.setBackground(new Color(169, 169, 169));
-		list.setBounds(580, 142, 288, 334);
-		adminPanel.add(list);
+		model = new DefaultListModel<String>();
+		JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(580, 93, 288, 377); 
+		adminPanel.add(scrollPane);
+		//adminPanel.add(list);
 		
-		btnAddToExam = new JButton("Add to Exam");
-		btnAddToExam.setBackground(new Color(255, 255, 255));
-		btnAddToExam.setForeground(new Color(30, 144, 255));
-		btnAddToExam.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnAddToExam.setBounds(580, 494, 287, 39);
-		adminPanel.add(btnAddToExam);
+		btnOrganizeTheExam = new JButton("Organize Exam");
+		btnOrganizeTheExam.setBackground(new Color(255, 255, 255));
+		btnOrganizeTheExam.setForeground(new Color(30, 144, 255));
+		btnOrganizeTheExam.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnOrganizeTheExam.setBounds(580, 494, 287, 39);
+		adminPanel.add(btnOrganizeTheExam);
 		
 		btnBackToMenu = new JButton("");
 		btnBackToMenu.setForeground(Color.WHITE);
@@ -136,6 +143,14 @@ public class AdminView extends JFrame {
 		btnBackToMenu.setContentAreaFilled(false);
 		btnBackToMenu.setBorderPainted(false);
 		adminPanel.add(btnBackToMenu);
+		JList list = new JList<String>(model);
+		//adminPanel.add(list);
+		list.setBackground(new Color(255, 255, 255));
+		list.setBounds(580, 93, 288, 377);
+		list.setVisibleRowCount(16);
+		list.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(list);
+		list.setAutoscrolls(true);
 		
 		
 		addInstructorPanel = new JPanel();
@@ -197,6 +212,17 @@ public class AdminView extends JFrame {
 		btnBackToAdminPanel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnBackToAdminPanel.setBounds(636, 510, 89, 33);
 		addInstructorPanel.add(btnBackToAdminPanel);
+		
+		txtSSN = new JTextField();
+		txtSSN.setBounds(428, 189, 143, 20);
+		addInstructorPanel.add(txtSSN);
+		txtSSN.setColumns(10);
+		
+		JLabel lblSsn = new JLabel("SSN :");
+		lblSsn.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblSsn.setForeground(new Color(30, 144, 255));
+		lblSsn.setBounds(313, 189, 70, 20);
+		addInstructorPanel.add(lblSsn);
 		
 		adminClassPanel = new JPanel();
 		adminClassPanel.setBackground(new Color(255, 255, 255));
@@ -297,12 +323,14 @@ public class AdminView extends JFrame {
 		this.btnAddNewClass = btnAddNewClass;
 	}
 
-	public JButton getBtnAddToExam() {
-		return btnAddToExam;
+	
+
+	public JButton getBtnOrganizeTheExam() {
+		return btnOrganizeTheExam;
 	}
 
-	public void setBtnAddToExam(JButton btnAddToExam) {
-		this.btnAddToExam = btnAddToExam;
+	public void setBtnOrganizeTheExam(JButton btnOrganizeTheExam) {
+		this.btnOrganizeTheExam = btnOrganizeTheExam;
 	}
 
 	public JButton getBtnBackToMenu() {
@@ -417,8 +445,20 @@ public class AdminView extends JFrame {
 		this.adminClassPanel = adminClassPanel;
 	}
 
-	
+	public JTextField getTxtSSN() {
+		return txtSSN;
+	}
 
-	
+	public void setTxtSSN(JTextField txtSSN) {
+		this.txtSSN = txtSSN;
+	}
+
+	public DefaultListModel<String> getModel() {
+		return model;
+	}
+
+	public void setModel(DefaultListModel<String> model) {
+		this.model = model;
+	}
 	
 }

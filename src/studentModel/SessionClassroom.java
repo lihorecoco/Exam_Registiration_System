@@ -24,14 +24,9 @@ public class SessionClassroom {
 		return students;
 	}
 
-
-
-
 	public void setStudents(ArrayList<Student> students) {
 		this.students = students;
 	}
-
-
 
 
 	public Classroom getClassroom() {

@@ -6,9 +6,17 @@ public class Student {
 	private String lastName;
 	private String SSN;
 	private String email;
-	
 	private String addres;
 	private String telNo;
+	
+	
+	public Student(String name,String lastName,String SSN){
+		this.name=name;
+		this.lastName=lastName;
+		this.SSN=SSN;
+		
+	}
+	
 	
 	public String getEmail() {
 		return email;
@@ -38,13 +46,7 @@ public class Student {
 		
 	}
 	
-	public Student(String name,String lastName,String SSN){
-		this.name=name;
-		this.lastName=lastName;
-		this.SSN=SSN;
-		
-	}
-	
+
 	
 	public String getName() {
 		return name;

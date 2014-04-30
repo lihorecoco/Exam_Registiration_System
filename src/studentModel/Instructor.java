@@ -2,16 +2,25 @@ package studentModel;
 
 public class Instructor {
 
+	private String SSN;
 	private String name;
 	private String surname;
 	private String phone;
 	
-	
-	public Instructor(String name, String surname, String phone) {
+	public Instructor(String sSN, String name, String surname, String phone) {
 		super();
+		SSN = sSN;
 		this.name = name;
 		this.surname = surname;
 		this.phone = phone;
+	}
+
+	public String getSSN() {
+		return SSN;
+	}
+
+	public void setSSN(String sSN) {
+		SSN = sSN;
 	}
 
 	public String getName() {
@@ -38,5 +47,5 @@ public class Instructor {
 		this.phone = phone;
 	}
 	
-
+	
 }
