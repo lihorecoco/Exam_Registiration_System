@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.Test;
+import model.Classroom;
+import model.Instructor;
+import model.OrganizedInstructorData;
+import model.OrganizedStudentData;
+import model.Student;
+import model.StudentDAOImpl;
 
-import studentModel.Classroom;
-import studentModel.Instructor;
-import studentModel.OrganizedInstructorData;
-import studentModel.OrganizedStudentData;
-import studentModel.Student;
-import studentModel.StudentDAOImpl;
+import org.junit.Test;
 
 public class QueryTests {
 

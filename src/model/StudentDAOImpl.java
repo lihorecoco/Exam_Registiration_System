@@ -1,4 +1,4 @@
-package studentModel;
+package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

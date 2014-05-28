@@ -1,4 +1,4 @@
-package studentModel;
+package model;
 
 public class Admin {
 	

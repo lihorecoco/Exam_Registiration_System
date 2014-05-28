@@ -1,4 +1,4 @@
-package studentController;
+package controller;
 
 import java.awt.CardLayout;
 import java.awt.Dialog;
@@ -10,27 +10,27 @@ import java.util.TreeMap;
 
 import javax.swing.JOptionPane;
 
+import model.Admin;
+import model.Classroom;
+import model.Exam;
+import model.ExamOrganizator;
+import model.Instructor;
+import model.OrganizedInstructorData;
+import model.OrganizedStudentData;
+import model.Session;
+import model.SessionClassroom;
+import model.Student;
+import model.StudentDAOImpl;
 import pdfCreater.PDFCreator;
 
 import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 
-import studentModel.Admin;
-import studentModel.Classroom;
-import studentModel.Exam;
-import studentModel.ExamOrganizator;
-import studentModel.Instructor;
-import studentModel.OrganizedInstructorData;
-import studentModel.OrganizedStudentData;
-import studentModel.Session;
-import studentModel.SessionClassroom;
-import studentModel.Student;
-import studentModel.StudentDAOImpl;
-import studentView.AdminView;
-import studentView.View;
+import view.AdminView;
+import view.View;
 
 public class Controller_Admin {
 
-	private studentView.View view;
+	private view.View view;
 	private ActionListener actionListener;
 	private Dialog dialog_control;
 	private AdminView admin_view;

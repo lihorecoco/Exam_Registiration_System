@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
 
-import studentView.*;
-import studentModel.*;
-import studentController.*;
+import model.*;
+import controller.*;
+import view.*;
 
 
 

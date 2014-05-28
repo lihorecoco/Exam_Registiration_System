@@ -3,7 +3,7 @@ package pdfCreater;
 import java.io.FileOutputStream;
 import java.sql.Date;
 
-import studentModel.OrganizedStudentData;
+import model.OrganizedStudentData;
 
 import com.itextpdf.text.Anchor;
 import com.itextpdf.text.BaseColor;

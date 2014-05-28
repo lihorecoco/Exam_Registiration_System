@@ -4,16 +4,17 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import model.Classroom;
+import model.ExamOrganizator;
+import model.Instructor;
+import model.OrganizedInstructorData;
+import model.OrganizedStudentData;
+import model.Session;
+import model.SessionClassroom;
+import model.Student;
+
 import org.junit.Test;
 
-import studentModel.Classroom;
-import studentModel.ExamOrganizator;
-import studentModel.Instructor;
-import studentModel.OrganizedInstructorData;
-import studentModel.OrganizedStudentData;
-import studentModel.Session;
-import studentModel.SessionClassroom;
-import studentModel.Student;
 import sun.print.resources.serviceui;
 
 public class ExamOrganizatorTest {

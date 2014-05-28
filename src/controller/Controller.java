@@ -1,4 +1,4 @@
-package studentController;
+package controller;
 
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -7,20 +7,20 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import studentModel.Classroom;
-import studentModel.ExamOrganizator;
-import studentModel.Instructor;
-import studentModel.Session;
-import studentModel.SessionClassroom;
-import studentModel.Student;
-import studentModel.StudentDAO;
-import studentModel.StudentDAOFactory;
-import studentModel.StudentDAOImpl;
+import model.Classroom;
+import model.ExamOrganizator;
+import model.Instructor;
+import model.Session;
+import model.SessionClassroom;
+import model.Student;
+import model.StudentDAO;
+import model.StudentDAOFactory;
+import model.StudentDAOImpl;
 
 public class Controller  {
 	
-		private studentModel.Student student;
-		private studentView.View view;
+		private model.Student student;
+		private view.View view;
 		private ActionListener actionListener;
 		private ExamOrganizator examOrganization;
 		private String msg;
@@ -30,7 +30,7 @@ public class Controller  {
 		
 	}
 	
-	public Controller(studentModel.Student student,studentView.View view){
+	public Controller(model.Student student,view.View view){
 		
 		this.student=student;
 		this.view=view;
