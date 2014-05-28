@@ -41,14 +41,7 @@ public class Controller  {
 		
 		
 		dbOperation = new StudentDAOImpl();
-		
-	
-	
-		
 		ArrayList<SessionClassroom> sessionClassrooms = new ArrayList<SessionClassroom>();
-		
-		
-		
 		Session session = new Session(sessionClassrooms,"21/03/2013" , "Session1");
 		
 		
@@ -78,9 +71,8 @@ public class Controller  {
 						
 						dbOperation.insertStudent(student);
 						
-						//msg= examOrganization.addStudentToClass(student).toString();
 						
-						JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
+						//JOptionPane.showMessageDialog(null, msg, "Display Message", JOptionPane.INFORMATION_MESSAGE);
 						
 					
 					}

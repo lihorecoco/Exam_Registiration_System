@@ -36,6 +36,7 @@ public class ExamOrganizator {
 			}
 		}
 		
+		
 		return availableToAssign;
 		
 	}
@@ -56,17 +57,23 @@ public class ExamOrganizator {
 		
 		}while(session.getSectionClassrooms().get(classNumber).getClassroom().getCapacity() == 0);
 		
+			System.out.println(""+session.getSectionClassrooms().get(classNumber).getClassroom().getCapacity() );
 		
 			session.getSectionClassrooms().get(classNumber).getStudents().add(student);
 			deskNumber=session.getSectionClassrooms().get(classNumber).getClassroom().getCapacity();
-			OrganizedStudentData studentOrganized = new OrganizedStudentData(student.getSSN() ,  session.getSectionClassrooms().get(classNumber).getClassroom().getName(), deskNumber);
 			
+			OrganizedStudentData studentOrgaznized = new OrganizedStudentData(student.getSSN(), session.getSectionClassrooms().get(classNumber).getClassroom().getName(), deskNumber,session.getSessionName(), session.getSessionDate());
+			
+			//OrganizedStudentData studentOrganized = new OrganizedStudentData(student.getSSN() ,  session.getSectionClassrooms().get(classNumber).getClassroom().getName(), deskNumber);
+			
+		
+			//session.getSectionClassrooms().get(classNumber).getClassroom().setCapacity(deskNumber);
+			dialogMessage="Student : " +  student.getName() + " has been added to class " +  session.getSectionClassrooms().get(classNumber).getClassroom().getName() + "Desk Number : " +deskNumber;
 			deskNumber--;
 			session.getSectionClassrooms().get(classNumber).getClassroom().setCapacity(deskNumber);
-			dialogMessage="Student : " +  student.getName() + " has been added to class " +  session.getSectionClassrooms().get(classNumber).getClassroom().getName() + "Desk Number : " +deskNumber;
 			System.out.println(dialogMessage);
 			
-			return studentOrganized;
+			return studentOrgaznized;
 			
 			
 	}
@@ -84,9 +91,10 @@ public class ExamOrganizator {
 			classNumber=rand.nextInt(session.getSectionClassrooms().size());
 			if(session.getSectionClassrooms().get(classNumber).getInstructor() == null){
 				session.getSectionClassrooms().get(classNumber).setInstructor(instructor);
-				
-				organizedInstructorData = new OrganizedInstructorData(instructor.getSSN(), session.getSectionClassrooms().get(classNumber).getClassroom().getName());
-				System.out.println("Instructor "+ instructor.getName() +" has been added to : " + session.getSectionClassrooms().get(classNumber).getClassroom().getName());
+				System.out.println(""+session.getSessionName());
+				organizedInstructorData= new OrganizedInstructorData(instructor.getSSN(),  session.getSectionClassrooms().get(classNumber).getClassroom().getName(), session.getSessionName(), session.getSessionDate());
+				//organizedInstructorData = new OrganizedInstructorData(instructor.getSSN(), session.getSectionClassrooms().get(classNumber).getClassroom().getName());
+				System.out.println("Instructor "+ instructor.getName() +" has been added to : " + session.getSectionClassrooms().get(classNumber).getClassroom().getName()+"sessionName " + session.getSessionName());
 				checkInstructor=false;
 				
 			}

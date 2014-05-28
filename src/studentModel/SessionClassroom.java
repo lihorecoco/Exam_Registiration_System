@@ -8,9 +8,6 @@ public class SessionClassroom {
 	private Classroom classroom;
 	private Instructor instructor;
 	
-	
-
-
 	public SessionClassroom(Classroom classroom) {
 		super();
 		
@@ -19,7 +16,6 @@ public class SessionClassroom {
 		
 	}
 
-	
 	public ArrayList<Student> getStudents() {
 		return students;
 	}

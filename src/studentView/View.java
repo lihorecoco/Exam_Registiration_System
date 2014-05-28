@@ -3,24 +3,34 @@ package studentView;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
+
 import java.awt.Component;
+
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
+
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Color;
+
 import javax.swing.UIManager;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
+
+import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
+import com.sun.corba.se.impl.protocol.giopmsgheaders.MessageBase;
+
 import java.awt.CardLayout;
 
 public class View extends JFrame {
@@ -36,7 +46,11 @@ public class View extends JFrame {
 	private JRadioButton rdMale;
 	private JRadioButton rdFemale;
 	
+	private JOptionPane msgLoginSuccess;
 	
+	public JOptionPane getMsgLoginSuccess() {
+		return msgLoginSuccess;
+	}
 	private JButton btnLogin;
 	private JButton btnSave;
 	private JButton btnClear;
@@ -128,10 +142,6 @@ public class View extends JFrame {
 		return btnClear;
 	}
 
-
-	
-	
-	
 	
 	  public JRadioButton getRdMale(){ return rdMale;}
       public JRadioButton getRdFemale(){ return rdFemale;}
@@ -147,52 +157,8 @@ public class View extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         getContentPane().add(tabbedPane, BorderLayout.CENTER);
         
-        JPanel pnlAdmin =new JPanel();
-        pnlAdmin.setForeground(new Color(30, 144, 255));
-        pnlAdmin.setBackground(Color.WHITE);
-        tabbedPane.addTab("Admin", null, pnlAdmin, null);
-        pnlAdmin.setLayout(null);
-        
-        txtUsername = new JTextField();
-        txtUsername.setBounds(439, 282, 169, 20);
-        pnlAdmin.add(txtUsername);
-        txtUsername.setColumns(10);
-        
-        JLabel lblUsername_1 = new JLabel("Username :");
-        lblUsername_1.setBounds(299, 281, 130, 21);
-        pnlAdmin.add(lblUsername_1);
-        lblUsername_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-        lblUsername_1.setForeground(SystemColor.textHighlight);
-        
-        JLabel lblPassword_1 = new JLabel("Password : ");
-        lblPassword_1.setBounds(299, 324, 130, 21);
-        pnlAdmin.add(lblPassword_1);
-        lblPassword_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-        lblPassword_1.setForeground(SystemColor.textHighlight);
-        
-        
-        txtPassword = new JPasswordField();
-        txtPassword.setBounds(439, 328, 169, 20);
-        pnlAdmin.add(txtPassword);
-        
-        lblSystemAdministration = new JLabel("System Administration");
-        lblSystemAdministration.setBackground(new Color(30, 144, 255));
-        lblSystemAdministration.setBounds(299, 98, 348, 31);
-        pnlAdmin.add(lblSystemAdministration);
-        lblSystemAdministration.setFont(new Font("Tahoma", Font.BOLD, 30));
-        lblSystemAdministration.setForeground(new Color(30, 144, 255));
-        
-        btnLogin = new JButton("Login\r\n");
-        btnLogin.setForeground(new Color(30, 144, 255));
-        btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        btnLogin.setToolTipText("");
-        btnLogin.setBounds(519, 376, 89, 31);
-        pnlAdmin.add(btnLogin);
-        
 
-        
-   
-        
+
         JPanel pnlRegistration = new JPanel();
         pnlRegistration.setBackground(Color.WHITE);
         tabbedPane.addTab("Registration", null, pnlRegistration, null);
@@ -297,13 +263,54 @@ public class View extends JFrame {
         rdFemale.setBounds(197, 184, 81, 23);
         pnlRegistration.add(rdFemale);
         
-          
-           
+
            JLabel lblGender = new JLabel("Gender");
            lblGender.setHorizontalAlignment(SwingConstants.RIGHT);
            lblGender.setFont(new Font("Tahoma", Font.BOLD, 11));
            lblGender.setBounds(18, 188, 93, 14);
            pnlRegistration.add(lblGender);
+           
+           JPanel pnlAdmin =new JPanel();
+           pnlAdmin.setForeground(new Color(30, 144, 255));
+           pnlAdmin.setBackground(Color.WHITE);
+           tabbedPane.addTab("Admin", null, pnlAdmin, null);
+           pnlAdmin.setLayout(null);
+           
+           txtUsername = new JTextField();
+           txtUsername.setBounds(439, 282, 169, 20);
+           pnlAdmin.add(txtUsername);
+           txtUsername.setColumns(10);
+           
+           JLabel lblUsername_1 = new JLabel("Username :");
+           lblUsername_1.setBounds(299, 281, 130, 21);
+           pnlAdmin.add(lblUsername_1);
+           lblUsername_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+           lblUsername_1.setForeground(SystemColor.textHighlight);
+           
+           JLabel lblPassword_1 = new JLabel("Password : ");
+           lblPassword_1.setBounds(299, 324, 130, 21);
+           pnlAdmin.add(lblPassword_1);
+           lblPassword_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+           lblPassword_1.setForeground(SystemColor.textHighlight);
+           
+           
+           txtPassword = new JPasswordField();
+           txtPassword.setBounds(439, 328, 169, 20);
+           pnlAdmin.add(txtPassword);
+           
+           lblSystemAdministration = new JLabel("System Administration");
+           lblSystemAdministration.setBackground(new Color(30, 144, 255));
+           lblSystemAdministration.setBounds(299, 98, 348, 31);
+           pnlAdmin.add(lblSystemAdministration);
+           lblSystemAdministration.setFont(new Font("Tahoma", Font.BOLD, 30));
+           lblSystemAdministration.setForeground(new Color(30, 144, 255));
+           
+           btnLogin = new JButton("Login\r\n");
+           btnLogin.setForeground(new Color(30, 144, 255));
+           btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
+           btnLogin.setToolTipText("");
+           btnLogin.setBounds(519, 376, 89, 31);
+           pnlAdmin.add(btnLogin);
        
         
     }

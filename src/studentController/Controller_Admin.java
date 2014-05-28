@@ -10,7 +10,13 @@ import java.util.TreeMap;
 
 import javax.swing.JOptionPane;
 
+import pdfCreater.PDFCreator;
+
+import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
+
+import studentModel.Admin;
 import studentModel.Classroom;
+import studentModel.Exam;
 import studentModel.ExamOrganizator;
 import studentModel.Instructor;
 import studentModel.OrganizedInstructorData;
@@ -30,19 +36,33 @@ public class Controller_Admin {
 	private AdminView admin_view;
 	private StudentDAOImpl dbOperation;
 	private ExamOrganizator examOrganizator;
+	private ArrayList<Admin> adminList;
+	private PDFCreator pdfCreator; 
 	
 	public Controller_Admin(View view,AdminView admin_view) {
 		super();
+		
+		dbOperation = new StudentDAOImpl();
 		this.view = view;
 		this.admin_view=admin_view;
 		admin_view.setVisible(false);
 		view.setVisible(true);
 		
+		ArrayList<Exam> exams = new ArrayList<Exam>();
+		exams = dbOperation.showExams();
+			
+		for(Exam tmpExam : exams)
+		{
+			admin_view.getComboBox().addItem(tmpExam.getExamName());
+			admin_view.getComboBoxNewSessionToExam().addItem(tmpExam.getExamName());
+		}
+		
+		
 	}
 	
 	public void control_Admin()
 	{
-		
+		adminList=new ArrayList<Admin>();
 		dbOperation = new StudentDAOImpl();
 		actionListener = new ActionListener() {
 			
@@ -51,11 +71,24 @@ public class Controller_Admin {
 				// TODO Auto-generated method stub
 				
 				if(e.getSource().equals(view.getBtnLogin())){
+					adminList=dbOperation.getAdmins();
+					boolean flag=false;
+					for(Admin a:adminList){
+						if(view.getTxtUsername().getText().trim().equalsIgnoreCase(a.getUsername())&&
+								new String(view.getTxtPassword().getPassword()).equalsIgnoreCase(a.getPassword())){
+							view.setVisible(false);
+							admin_view.setVisible(true);
+							flag=true;
+							break;	
+						}
+						else{
+							view.getMsgLoginSuccess().showMessageDialog(null, "Username or Password is wrong",
+								      "Display Message", JOptionPane.INFORMATION_MESSAGE);
+							
+						}
 					
-					
-					view.setVisible(false);
-					admin_view.setVisible(true);
-					
+					}
+
 				}
 				else if(e.getSource().equals(admin_view.getBtnBackToMenu())){
 					
@@ -70,8 +103,7 @@ public class Controller_Admin {
 				
 			}
 		};
-	
-		
+
 	view.getBtnLogin().addActionListener(actionListener);
 	admin_view.getBtnBackToMenu().addActionListener(actionListener);
 	admin_view.getBtnAddInstructor().addActionListener(actionListener);
@@ -84,6 +116,13 @@ public class Controller_Admin {
 	admin_view.getBtnShowClasses().addActionListener(actionListener);
 	admin_view.getBtnShowInstructor().addActionListener(actionListener);
 	admin_view.getBtnShowRegisteredStudents().addActionListener(actionListener);
+	admin_view.getBtnBackSession().addActionListener(actionListener);
+	admin_view.getBtnAddNewSession().addActionListener(actionListener);
+	admin_view.getBtnAddSession().addActionListener(actionListener);
+	admin_view.getBtnBackFromExam().addActionListener(actionListener);
+	admin_view.getBtnNewExam().addActionListener(actionListener);
+	admin_view.getBtnAddExam().addActionListener(actionListener);
+	//admin_view.getComboBox().addActionListener(actionListener);
 	}
 	
 	private void adminPanelChanger(ActionEvent e)
@@ -98,11 +137,29 @@ public class Controller_Admin {
 			admin_view.getAdminPanel().setVisible(false);
 			admin_view.getAdminClassPanel().setVisible(true);
 		}
-		else if( e.getSource().equals(admin_view.getBtnBackToAdminPanel()) || e.getSource().equals(admin_view.getBtnBackFromAddClass())){
+		else if(e.getSource().equals(admin_view.getBtnAddNewSession())){
+			admin_view.getAdminPanel().setVisible(false);
+			admin_view.getNewSessionPanel().setVisible(true);
+			
+		}
+		else if(e.getSource().equals(admin_view.getBtnNewExam()))
+		{
+			admin_view.getAdminPanel().setVisible(false);
+			admin_view.getNewExamPanel().setVisible(true);
+		
+		}
+		
+		
+		else if( e.getSource().equals(admin_view.getBtnBackToAdminPanel()) || e.getSource().equals(admin_view.getBtnBackFromAddClass()) || e.getSource().equals(admin_view.getBtnBackSession()) || e.getSource().equals(admin_view.getBtnBackFromExam())){
 			
 			admin_view.getAdminPanel().setVisible(true);
 			admin_view.getAdminClassPanel().setVisible(false);
 			admin_view.getAddInstructorPanel().setVisible(false);
+			admin_view.getNewSessionPanel().setVisible(false);
+			admin_view.getNewExamPanel().setVisible(false);
+		
+		
+			
 		}
 		else if( e.getSource().equals(admin_view.getBtnNewInstructor()))
 		{
@@ -129,43 +186,66 @@ public class Controller_Admin {
 			int count=0;
 			ArrayList<Instructor> instructors = new ArrayList<>();
 			ArrayList<Student> students = new ArrayList<>();
-			ArrayList<SessionClassroom> sessionClassrooms = new ArrayList<>();
+		
 			ArrayList<Classroom> classrooms = new ArrayList<>();
-			
+			ArrayList<Session> session = new ArrayList<>();
+			String stringNamedSession = admin_view.getComboBox().getSelectedItem().toString();
 			
 			instructors = dbOperation.showInstructors();
-			students = dbOperation.showAddedStudent();
-			classrooms = dbOperation.showClassrooms();
+			//students = dbOperation.showAddedStudent();
+			//classrooms = dbOperation.showClassrooms();
+			session = dbOperation.bringSectionsUptoExamName(stringNamedSession);
+			
+			
 			
 			Map<String, SessionClassroom> classroomSessions = new TreeMap<String, SessionClassroom>();
 			
-			for (Classroom classTmp : classrooms)
+			for (Session tmpSession : session )
 			{
-				count++;
-				String name = ("sessionClassroom" + count);
-				SessionClassroom s = new SessionClassroom(classTmp);
-				classroomSessions.put(name,s);
-				sessionClassrooms.add(classroomSessions.get("sessionClassroom" + count));
-			
-			}
-			
-			Session session = new Session(sessionClassrooms, "21/16/2013", "Session1");
-			examOrganizator=new ExamOrganizator(session);
-			
-			 for (Instructor instructorTmp: instructors)
-			 {
-				OrganizedInstructorData organizedInstructor= examOrganizator.addInstructorToclass(instructorTmp);
-				dbOperation.insertInstructorAssign(organizedInstructor); 
-				 
-			 }
-			 for (Student studentTmp : students)
-			 {
-				 
-				OrganizedStudentData organizedStudent = examOrganizator.addStudentToClass(studentTmp);
-				dbOperation.insertEnrollment(organizedStudent); 
 				
-			 }
+				students = dbOperation.showAddedStudentupToClass(tmpSession.getClassFor());
+				classrooms = dbOperation.showClassrooms();
+				ArrayList<SessionClassroom> sessionClassrooms = new ArrayList<>();
+				for (Classroom classTmp : classrooms)
+				{
+					count++;
+					String name = ("sessionClassroom" + count);
+					SessionClassroom s = new SessionClassroom(classTmp);
+					classroomSessions.put(name,s);
+					sessionClassrooms.add(classroomSessions.get("sessionClassroom" + count));
+				
+				}
+				Session sessionNew = new Session(sessionClassrooms, tmpSession.getSessionDate(), tmpSession.getSessionName(), tmpSession.getClassFor());
+				//Session sessionNew = new Session(sessionClassrooms, tmpSession.getSessionDate(), tmpSession.getClassFor());
+				examOrganizator = new ExamOrganizator(sessionNew);
+				 
+				for(int i = 0 ; i < sessionClassrooms.size() ; i++){
+					System.out.println("size : **** : "+sessionClassrooms.size());
+					OrganizedInstructorData organizedInstructor = examOrganizator.addInstructorToclass(instructors.get(i));
+					if(organizedInstructor != null)
+					dbOperation.insertInstructorAssign(organizedInstructor); 
+				}
 			
+				 for (Student studentTmp : students)
+				 {
+					 
+					OrganizedStudentData organizedStudent = examOrganizator.addStudentToClass(studentTmp);
+					dbOperation.insertEnrollment(organizedStudent); 
+					
+				 }
+				pdfCreator = new PDFCreator();
+				ArrayList<OrganizedStudentData> lastOrganizedStudentData = new ArrayList<>();
+				lastOrganizedStudentData = dbOperation.bringOrganizedStudentToExamCard(); 
+			
+				for(OrganizedStudentData tmpEnroll : lastOrganizedStudentData)
+				{
+					
+					System.out.println("first Name : "+ tmpEnroll.getFirstName());
+					
+					pdfCreator.createPDF(tmpEnroll);
+				}
+				
+			}
 			 
 		}
 	
@@ -198,6 +278,15 @@ public class Controller_Admin {
 			
 			
 		}
+		else if(e.getSource().equals(admin_view.getBtnAddSession()))
+		{
+			
+			Session newSession = new Session(admin_view.getTxtSessionDate().getText() , admin_view.getTxtSessionName().getText(), admin_view.getTxtSessionForClass().getText());
+			dbOperation.insertSession(newSession,admin_view.getComboBoxNewSessionToExam().getSelectedItem().toString());
+			
+		}
+		
+		
 		else if(e.getSource().equals(admin_view.getBtnShowRegisteredStudents()))
 		{
 			
@@ -213,9 +302,20 @@ public class Controller_Admin {
 			
 		}
 	
+		else if(e.getSource().equals(admin_view.getBtnAddExam()))
+		{
+			
+			Exam examNew = new Exam(admin_view.getTxtExamName().getText(), admin_view.getTxtExamStartDate().getText(), admin_view.getTxtExamEndDate().getText());
+			dbOperation.insertExam(examNew);
+			
+			
+		}
+		
+	
+	
 	}
 	    
-	
+
 	
 	
 }
