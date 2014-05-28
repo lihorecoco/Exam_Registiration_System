@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
 
+import view.*;
 import model.*;
 import controller.*;
-import view.*;
 
 
 
@@ -36,11 +36,7 @@ public class Run {
 		}
 				
 				
-			
-				
 }
-		
-		
 			
 
 

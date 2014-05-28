@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Test;
+
 import model.Classroom;
 import model.ExamOrganizator;
 import model.Instructor;
@@ -12,9 +14,6 @@ import model.OrganizedStudentData;
 import model.Session;
 import model.SessionClassroom;
 import model.Student;
-
-import org.junit.Test;
-
 import sun.print.resources.serviceui;
 
 public class ExamOrganizatorTest {

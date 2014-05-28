@@ -1,5 +1,7 @@
 package model;
 
+
+
 import java.util.ArrayList;
 
 public class Exam {
@@ -52,9 +54,4 @@ public class Exam {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	
-	
-	
-	
-	
 }
