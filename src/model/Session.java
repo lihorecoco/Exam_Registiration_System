@@ -7,8 +7,7 @@ public class Session {
 
 	private ArrayList<SessionClassroom> sectionClassrooms ;
 	private String sessionDate;
-	private String sessionName;
-	private String classFor;
+	private String definition;
 	
 	public Session(ArrayList<SessionClassroom> sectionClassrooms,
 			String sessionDate, String definition) {
@@ -16,25 +15,7 @@ public class Session {
 		this.sectionClassrooms = new ArrayList<SessionClassroom>();
 		this.sectionClassrooms = sectionClassrooms;
 		this.sessionDate = sessionDate;
-		this.classFor = definition;
-	}
-
-	public Session(String sessionDate ,String sessionName, String classfor)
-	{
-		this.sessionName=sessionName;
-		this.sessionDate = sessionDate; 
-		this.classFor=classfor;
-		
-	}
-	
-	
-	public Session(ArrayList<SessionClassroom> sectionClassrooms,
-			String sessionDate, String sessionName, String classFor) {
-		super();
-		this.sectionClassrooms = sectionClassrooms;
-		this.sessionDate = sessionDate;
-		this.sessionName = sessionName;
-		this.classFor = classFor;
+		this.definition = definition;
 	}
 
 	public ArrayList<SessionClassroom> getSectionClassrooms() {
@@ -53,22 +34,13 @@ public class Session {
 		this.sessionDate = sessionDate;
 	}
 
-	public String getSessionName() {
-		return sessionName;
+	public String getDefinition() {
+		return definition;
 	}
 
-	public void setSessionName(String sessionName) {
-		this.sessionName = sessionName;
+	public void setDefinition(String definition) {
+		this.definition = definition;
 	}
-
-	public String getClassFor() {
-		return classFor;
-	}
-
-	public void setClassFor(String classFor) {
-		this.classFor = classFor;
-	}
-
 	
 	
 	

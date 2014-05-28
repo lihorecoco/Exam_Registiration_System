@@ -7,7 +7,7 @@ public class ConnectionManager {
   
 	private String className = "com.mysql.jdbc.Connection";
 	private String userName = "myuser";
-	private String password = "Password1";
+	private String password = "12345";
 	private String url = "jdbc:mysql://localhost/examregistrationdbtest";
 	private static ConnectionManager connectionInstance = null;
   

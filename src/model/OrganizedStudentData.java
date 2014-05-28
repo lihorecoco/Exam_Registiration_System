@@ -2,7 +2,7 @@ package model;
 
 public class OrganizedStudentData {
 
-	
+
 	private String SSN;
 	private String firstName;
 	private String lastName;
@@ -10,7 +10,7 @@ public class OrganizedStudentData {
 	private int deskNumber;
 	private String sessionName;
 	private String sessionDate;
-	
+
 	public OrganizedStudentData(String sSN, String classNameToAttend,
 			int deskNumber) {
 		super();
@@ -19,8 +19,8 @@ public class OrganizedStudentData {
 		this.deskNumber = deskNumber;
 	}
 
-	
-	
+
+
 	public OrganizedStudentData(String firstName, String lastName,
 			String classNameToAttend, int deskNumber, String sessionName,
 			String sessionDate) {
@@ -34,8 +34,6 @@ public class OrganizedStudentData {
 	}
 
 
-
-
 	public String getSessionName() {
 		return sessionName;
 	}
@@ -47,14 +45,9 @@ public class OrganizedStudentData {
 		this.sessionName = sessionName;
 	}
 
-
-
-
 	public String getSessionDate() {
 		return sessionDate;
 	}
-
-
 
 
 	public void setSessionDate(String sessionDate) {
@@ -73,8 +66,6 @@ public class OrganizedStudentData {
 		this.sessionName = sessionName;
 		this.sessionDate = sessionDate;
 	}
-
-
 
 
 	public String getSSN() {
@@ -124,9 +115,9 @@ public class OrganizedStudentData {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }

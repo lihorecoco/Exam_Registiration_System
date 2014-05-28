@@ -19,7 +19,7 @@ public class QueryTests {
 	
 	@Test
 	public void testInsertStudent() {
-		Student student = new Student("Canberk", "Doğan", "12345");
+		Student student = new Student("Canberk", "Doğan", "12345","","","","");
 		assertEquals("Must be 0" , 0 ,dbOperation.insertStudent(student));
 	}
 

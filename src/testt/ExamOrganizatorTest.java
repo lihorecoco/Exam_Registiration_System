@@ -31,7 +31,7 @@ public class ExamOrganizatorTest {
 		classrooms.add(sessionClassroom);
 		session = new Session(classrooms, "21/16/2014", "Session");
 		examOrganizator = new ExamOrganizator(session);
-		Student testStudent = new Student("Paul", "West", "12345");
+		Student testStudent = new Student("Paul", "West", "12345","asd","ad","dd","d");
 		OrganizedStudentData testOrganizedStudent= examOrganizator.addStudentToClass(testStudent);
 		assertNotNull(testOrganizedStudent);
 		
