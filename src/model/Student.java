@@ -12,7 +12,14 @@ public class Student {
 	
 	
 
-
+	
+	public Student(String name,String lastName,String SSN){
+		this.name=name;
+		this.lastName=lastName;
+		this.SSN=SSN;
+		
+	}
+	
 
 	public Student(String name,String lastName,String SSN,String email,String address,String telNo, String stdClass){
 		this.name=name;
